@@ -268,8 +268,11 @@ That's why I wrote in advance a few elements for you!
 
 Let's suppose we are building the same register page as before.
 Instead of rewriting the components from earlier everytime we can simply use the components found with the form!
+We can find basic but common components in this directory `./utils/formFunctions.ts`
 
 ```typescript
+import "./utils/formFunctions.ts"
+
 const data = [
 
 
