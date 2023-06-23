@@ -4,7 +4,7 @@ import Input from "./Input";
 import { FormProps } from "../types/form";
 import Select from "./Select";
 import TextArea from "./TextArea";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 
 export default function Form<T extends FieldValues>({
   data,
