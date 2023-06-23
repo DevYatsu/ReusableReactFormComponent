@@ -1,5 +1,5 @@
 "use client";
-import { InputProps } from "./types/form";
+import { Input } from "../@types/input";
 import React from "react";
 const checkPassword = (getValues: any) => {
   const { password, passwordConfirmation } = getValues();
@@ -20,7 +20,7 @@ const Input = ({
   required,
   getValues,
   isPasswordConfirm,
-}: InputProps) => {
+}: Input) => {
   const regPattern = pattern
     ? typeof pattern === "string"
       ? new RegExp(pattern)

@@ -1,7 +1,7 @@
 import React from "react";
-import { SelectProps } from "./types/form";
+import { Select } from "../@types/select";
 
-const Select = ({ name, register, values }: SelectProps) => (
+const Select = ({ name, register, values }: Select) => (
   <>
     <select {...register(name)}>
       {values.map((option) => (

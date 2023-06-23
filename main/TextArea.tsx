@@ -1,5 +1,5 @@
-import { TextAreaProps } from "./types/form";
 import React from "react";
+import { TextArea } from "../@types/textarea";
 
 const TextArea = ({
   name,
@@ -7,7 +7,7 @@ const TextArea = ({
   placeholder,
   required,
   rows,
-}: TextAreaProps) => (
+}: TextArea) => (
   <>
     <label htmlFor="comment" className="sr-only">
       Your {name}

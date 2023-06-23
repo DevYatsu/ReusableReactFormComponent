@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Input from "./Input";
-import { FormProps } from "./types/form";
+import { FormProps } from "../@types/form";
 import Select from "./Select";
 import TextArea from "./TextArea";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
