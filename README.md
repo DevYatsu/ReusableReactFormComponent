@@ -196,7 +196,23 @@ Let's suppose we are building a register page on my website.
 
 ```typescript
 const data = [
-{name: "username", placeholder: "Your username..."},
+{
+    name: "username",
+    placeholder: "John",
+    minLength: {
+      value: 4,
+      message: "Username must be at least 3 characters long",
+    },
+    maxLength: {
+      value: 18,
+      message: "Username cannot exceed 18 characters long",
+    },
+    pattern: {
+      value: "^[a-zA-Z0-9]+(?: [a-zA-Z0-9]+)*$",
+      message: "Invalid username.",
+    },
+    required: "Username is required",
+  },
 {name: "email", placeholder: "Your email...",
    pattern: {
       value: '(?:[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*|"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])'
@@ -251,7 +267,7 @@ That's why I wrote in advance a few elements for you!
 ### 6. Making our forms even simpler!
 
 Let's suppose we are building the same register page as before.
-Instead of rewriting the components from earlier everytime I can simply use the components found with the form!
+Instead of rewriting the components from earlier everytime we can simply use the components found with the form!
 
 ```typescript
 const data = [
