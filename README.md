@@ -271,10 +271,11 @@ Instead of rewriting the components from earlier everytime we can simply use the
 We can find basic but common components in this directory `./utils/formFunctions.ts`
 
 ```typescript
-import "./utils/formFunctions.ts"
+import {getGenericFormInputsData} from "./utils/formFunctions.ts"
 
-const data = [
-
+const data = getGenericFormInputsData("username", "email", "password", "passwordCheck"); // in the right order we put the components names as parameters of this function.
+//now the data variable contains the same array with object as before;
+//actually these saved components are more secure and have more restrictions and validation rules
 
 function App() {
   return (
@@ -293,6 +294,10 @@ function App() {
   );
 }
 ```
+
+Isn't it actually easy ?
+We've come full circle! 
+You have seen everything there is to seen in my simple project, have fun!
 
 ### 7. Start your application:
 `npm start` or `npm dev`
