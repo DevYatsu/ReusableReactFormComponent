@@ -251,7 +251,7 @@ That's why I wrote in advance a few elements for you!
 ### 6. Making our forms even simpler!
 
 Let's suppose we are building the same register page as before.
-Instead of rewriting the components from earlier everytime I can simply use the components 
+Instead of rewriting the components from earlier everytime I can simply use the components found with the form!
 
 ```typescript
 const data = [
