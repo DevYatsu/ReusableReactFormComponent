@@ -60,6 +60,6 @@ export type FormProps = {
   mistakeInstruction?: string;
   isSimpleForm?: boolean;
   extraData?: extraFormData;
-  successRedirectionURL: string;
+  successRedirectionURL?: string;
   removeRequestProps?: string[];
 };

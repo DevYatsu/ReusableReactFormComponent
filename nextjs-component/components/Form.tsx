@@ -55,7 +55,7 @@ export default function Form<T extends FieldValues>({
 
     console.log(responseBody);
 
-    if (responseBody.status === 200) {
+    if (responseBody.status === 200 && successRedirectionURL) {
       router.push(successRedirectionURL);
     }
   };
