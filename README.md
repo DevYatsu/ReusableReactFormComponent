@@ -54,8 +54,11 @@ function App() {
   return (
     <div className="App">
       <Form 
-          data={data} //represents the informations on the different elements in the form
-          submitURL="/api/urlToPostOn" // the url the data entered in the form will be POSTed to
+          data={data} 
+            //represents the informations on the different elements in the form
+   
+          submitURL="/api/urlToPostOn" 
+             // the url the data entered in the form will be posted to
       />
     </div>
   );
@@ -94,13 +97,15 @@ const data = [
     value: 0,
     message: "Number must be positive"
   },
-  required: "number is required" //same as required: true, here is a way to directly set the error message
+  required: "number is required" 
+   //same as required: true, here is a way to directly set the error message
 }, 
 {
   element: "select",
   name: "pickAFlavour", // name of the select (unique as well)
   values: [ // the options of the select
-    {value: "1", displayValue: "chocolate"}, //option with type {value: string; displayValue: string;}
+    {value: "1", displayValue: "chocolate"}, 
+     //option with type {value: string; displayValue: string;}
     {value: "2", displayValue: "vanilla"}
   ]
 }, 
@@ -251,7 +256,10 @@ function App() {
           data={data}
           submitURL="/api/register"
           goal="register"    
-          successRedirectionURL={"/login"} // do not forget to set it up if not using nextjs
+   
+          successRedirectionURL={"/login"} 
+         // do not forget to set it up if not using nextjs
+   
           removeRequestProps={["passwordConfirm"]}
          />
       <main/>
@@ -273,8 +281,9 @@ We can find basic but common components in this directory `./utils/formFunctions
 ```typescript
 import {getGenericFormInputsData} from "./utils/formFunctions.ts"
 
-const data = getGenericFormInputsData("username", "email", "password", "passwordCheck"); // in the right order we put the components names as parameters of this function.
-//now the data variable contains the same array with object as before;
+const data = getGenericFormInputsData("username", "email", "password", "passwordCheck"); 
+// in the right order we put the components names as parameters of this function.
+// now the data variable contains the same array with object as before;
 //actually these saved components are more secure and have more restrictions and validation rules
 
 function App() {
