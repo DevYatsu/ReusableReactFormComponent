@@ -189,6 +189,14 @@ function App() {
           //an array of the element names that must be removed before posting the data
           //for example here passwordConfirm is removed, this way there is only the password that is sent 
           // and no passwordConfirm which may be useless
+
+         redirectFunction={redirect} // (Function)
+         //a function called to redirect the user on another page
+         //should take one parameter which is the url to redirect on
+         //this parameter is to be set in the successRedirectionURL form parameter
+
+         //only on the component not destined to be used on nextJS
+         //can still be used on nextJS though but I do not recommand it
       />
     </div>
   );
