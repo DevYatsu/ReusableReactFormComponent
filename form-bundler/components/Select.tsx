@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectProps } from "../types/form";
+import { SelectProps } from "./types/form";
 
 const Select = ({ name, register, values }: SelectProps) => (
   <>

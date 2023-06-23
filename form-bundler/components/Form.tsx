@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Input from "./Input";
-import { FormProps } from "../types/form";
+import { FormProps } from "./types/form";
 import Select from "./Select";
 import TextArea from "./TextArea";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
@@ -17,6 +17,7 @@ export default function Form<T extends FieldValues>({
   extraData,
   successRedirectionURL,
   removeRequestProps,
+  redirectFunction,
 }: FormProps) {
   const {
     register,
@@ -49,9 +50,13 @@ export default function Form<T extends FieldValues>({
 
     const responseBody = await response.json();
 
-    console.log(responseBody);
-
-    // redirect if necessary to successRedirectionURL (form parameter)
+    if (
+      responseBody.status === 200 &&
+      successRedirectionURL &&
+      redirectFunction
+    ) {
+      redirectFunction(successRedirectionURL);
+    }
   };
 
   return (
