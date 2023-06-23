@@ -20,6 +20,7 @@ export type FormInputProps = {
   min?: InputPropsRestrictions<number>;
   max?: InputPropsRestrictions<number>;
   required?: boolean | string;
+  disabled?: boolean;
 };
 export type FormSelectProps = {
   element: "select";
