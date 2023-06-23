@@ -1,5 +1,5 @@
 "use client";
-import { InputProps } from "../types/form";
+import { InputProps } from "./types/form";
 import React from "react";
 const checkPassword = (getValues: any) => {
   const { password, passwordConfirmation } = getValues();

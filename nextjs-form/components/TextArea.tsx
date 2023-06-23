@@ -1,5 +1,5 @@
-import { TextAreaProps } from "../types/form";
-import React from "react"
+import { TextAreaProps } from "./types/form";
+import React from "react";
 
 const TextArea = ({
   name,

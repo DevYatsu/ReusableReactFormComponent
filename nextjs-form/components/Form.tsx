@@ -2,7 +2,7 @@
 import React from "react";
 import Input from "./Input";
 import Link from "next/link";
-import { FormProps } from "../types/form";
+import { FormProps } from "./types/form";
 import Select from "./Select";
 import TextArea from "./TextArea";
 import { useRouter } from "next/navigation";
