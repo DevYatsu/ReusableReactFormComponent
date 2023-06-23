@@ -57,7 +57,7 @@ export type FormProps = {
   title?: string;
   submitURL: string;
   className?: string;
-  mistakeInstruction?: string;
+  mistakeInstruction?: string | [href: string, instruction: string];
   isSimpleForm?: boolean;
   extraData?: extraFormData | Record<string, any>;
   successRedirectionURL?: string;

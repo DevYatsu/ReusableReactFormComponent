@@ -109,6 +109,10 @@ export default function Form<T extends FieldValues>({
             <a href={"/login"}>Already registered? Login</a>
           ) : goal === "login" ? (
             <a href={"/register"}>Not Registered? Join Us</a>
+          ) : typeof mistakeInstruction === "object" ? (
+            <a href={mistakeInstruction[0]}>
+              {mistakeInstruction[1] ? mistakeInstruction[1] : ""}
+            </a>
           ) : (
             <a href={"/"}>{mistakeInstruction ? mistakeInstruction : ""}</a>
           )}
