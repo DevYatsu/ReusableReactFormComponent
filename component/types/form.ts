@@ -59,7 +59,7 @@ export type FormProps = {
   className?: string;
   mistakeInstruction?: string;
   isSimpleForm?: boolean;
-  extraData?: extraFormData;
+  extraData?: extraFormData | Record<string, any>;
   successRedirectionURL?: string;
   removeRequestProps?: string[];
 };
