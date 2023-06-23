@@ -162,7 +162,7 @@ function App() {
           // default set to false, not recommended except when using textarea alone
 
           mistakeInstruction={"Not Registered yet? Join Now"}
-          //(string|[href: string; instruction: string]|undefined)
+          //(string | [href: string; instruction: string] | undefined)
           // instruction set at the end of the form
           // when using the goal parameter, it is automatically set
           // otherwise it's value is "" except if you set it yourself
@@ -190,5 +190,92 @@ function App() {
 }
 ```
 
-### 6. Start your application:
+### 6. Concrete example
+
+Let's suppose we are building a register page on my website.
+
+```typescript
+const data = [
+{name: "username", placeholder: "Your username..."},
+{name: "email", placeholder: "Your email...",
+   pattern: {
+      value: '(?:[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*|"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])'
+      message: 
+         "Password must contain at least 1 capital and lowercase letter, 1 digit and 1 special character."
+   }
+},
+{
+   name: "password", placeholder: "Your password...", type: "password", 
+   minLength: {value: 8, message : "Password must be at least 8 chars long."},
+   maxLength: {value: 40, message : "Password cannot exceed 40 chars long."},
+   pattern: {
+      value: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
+      message: 
+         "Password must contain at least 1 capital and lowercase letter, 1 digit and 1 special character."
+   }
+},
+{name: "passwordConfirm", placeholder: "Your password again...", type: "password"
+   minLength: {value: 8, message : "Password must be at least 8 chars long."},
+   maxLength: {value: 40, message : "Password cannot exceed 40 chars long."},
+   pattern: {
+      value: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
+      message: 
+         "Password must contain at least 1 capital and lowercase letter, 1 digit and 1 special character."
+   },
+   isPasswordConfirm: true
+},
+];
+
+function App() {
+  return (
+    <div className="App">
+      <Navbar />
+      <main>
+         <Form 
+          data={data}
+          submitURL="/api/register"
+          goal="register"    
+          successRedirectionURL={"/login"} // do not forget to set it up if not using nextjs
+          removeRequestProps={["passwordConfirm"]}
+         />
+      <main/>
+    </div>
+  );
+}
+```
+
+It's done! As simple as that our component works perfectly!
+But it is kind of painful to write the data object right ?
+That's why I wrote in advance a few elements for you!
+
+### 6. Making our forms even simpler!
+
+Let's suppose we are building the same register page as before.
+Instead of rewriting the components from earlier everytime I can simply use the components 
+
+```typescript
+const data = [
+
+
+function App() {
+  return (
+    <div className="App">
+      <Navbar />
+      <main>
+         <Form 
+          data={data}
+          submitURL="/api/register"
+          goal="register"    
+          successRedirectionURL={"/login"} // do not forget to set it up if not using nextjs
+          removeRequestProps={["passwordConfirm"]}
+         />
+      <main/>
+    </div>
+  );
+}
+```
+
+### 7. Start your application:
 `npm start` or `npm dev`
+
+Start using this simple form component and have fun!
