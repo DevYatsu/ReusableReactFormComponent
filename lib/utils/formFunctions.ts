@@ -74,3 +74,6 @@ export function getGenericFormInputsData(
 ): FormInput[] {
   return [...params].map((name) => genericFormInputsData[name]);
 }
+export function test() {
+  return "test";
+}
