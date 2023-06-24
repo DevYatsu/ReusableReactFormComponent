@@ -138,7 +138,7 @@ We can now look at the customization of the parameters on the Form component.
 
 ```typescript
 import { Form } from 'reusable-react-form/lib/main';
-import {genInput, genSelect, genTextArea} from "reusable-react-form/lib/utils";
+import { genInput, genSelect, genTextArea } from "reusable-react-form/lib/utils";
 
 const data = [//name       //placeholder
 formInput("testInput", "Enter some text...", {//options in an object
@@ -283,7 +283,7 @@ We can find basic but common components in this directory `./utils/formFunctions
 
 ```typescript
 import { Form } from 'reusable-react-form/lib/main';
-import {getGenericFormInputsData, formInput} from "reusable-react-form/lib/utils"
+import { getGenericFormInputsData, genInput } from "reusable-react-form/lib/utils"
 
 const data = getGenericFormInputsData("username", "email", "password", "passwordCheck"); 
 // in the right order we put the components names as parameters of this function.
@@ -319,7 +319,21 @@ Isn't it actually easy ?
 We've come full circle! 
 You have seen everything there is to seen in my simple project, have fun!
 
-### 7. Start your application:
-`npm start` or `npm dev`
+### 7. Start using the lib:
+Just a fresh reminder: 
+- to install the package
+``npm install reusable-react-form``
+- to import the Form in a nextJS project
+```typescript
+import { Form } from "reusable-react-form/lib/next";
+```
+- to import the Form in any other reactJS project
+```typescript
+import { Form } from "reusable-react-form/lib/main";
+```
+- to import third-party functions and utils
+```typescript
+import { getGenericFormInputsData, genInput, genSelect, genTextArea } from "reusable-react-form/lib/main";
+```
 
 Start using this simple form component and have fun!
