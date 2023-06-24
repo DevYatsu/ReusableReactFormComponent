@@ -14,16 +14,10 @@ The form component provides an easy and efficient way to handle form validation,
 
 To use the form component in your project, follow these steps:
 
-### 1. Clone the repository:
-`git clone https://github.com/your-username/your-repo.git`
+### 1. Install **reusable-react-hook** library:
+\- `npm install reusable-react-hook` or `pnpm install reusable-react-hook`
 
-### 2. Install the dependencies:
-   
-\- `cd component-dir`
-
-\- `npm install` or `pnpm install`
-
-### 3. Import the form component into your React application:
+### 2. Import the form component into your React application:
 
 ```typescript
 import { Form } from 'reusable-react-form/lib/main';
@@ -38,7 +32,7 @@ function App() {
 }
 ```
 
-### 4. Add the minimal parameters for the Form to works correctly
+### 3. Add the minimal parameters for the Form to works correctly
 
 ```typescript
 import { Form } from 'reusable-react-form/lib/main';
@@ -281,7 +275,7 @@ It's done! As simple as that our component works perfectly!
 But it is kind of painful to write the data object right ?
 That's why I wrote in advance a few elements for you!
 
-### 6. Making our forms even simpler!
+### 7. Making our forms even simpler!
 
 Let's suppose we are building the same register page as before.
 Instead of rewriting the components from earlier everytime we can simply use the components found with the form!
