@@ -1,8 +1,8 @@
 import { Select } from "../../@types/select";
 
-const Select = ({ name, register, values }: Select) => (
+const Select = ({ name, register, values, disabled }: Select) => (
   <>
-    <select {...register(name)}>
+    <select {...register(name, { disabled })}>
       {values.map((option) => (
         <option value={option.value} key={option.value}>
           {option.displayValue}
