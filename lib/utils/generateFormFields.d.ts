@@ -32,4 +32,24 @@ export declare const genTextArea: (name: string, placeholder: string, options: T
     name: string;
     placeholder: string;
     element: "input" | "select" | "textarea";
+} | {
+    isPasswordConfirm?: boolean | undefined;
+    minLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
+    maxLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
+    pattern?: import("../../@types/input").ReactHookFormPropertiesRestrictions<string> | undefined;
+    min?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
+    max?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
+    required?: string | boolean | undefined;
+    disabled?: boolean | undefined;
+    name: string;
+    placeholder: string;
+    element: "input" | "select" | "textarea";
+} | {
+    required?: string | boolean | undefined;
+    minLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
+    maxLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
+    rows?: number | undefined;
+    name: string;
+    placeholder: string;
+    element: "input" | "select" | "textarea";
 };
