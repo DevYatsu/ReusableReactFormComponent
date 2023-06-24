@@ -89,6 +89,7 @@ class TextAreaField extends FormField {
       name: this.name,
       placeholder: this.placeholder,
       element: this._element,
+      ...this.options,
     };
   }
 }
