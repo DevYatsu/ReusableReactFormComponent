@@ -7,9 +7,10 @@
   "module": "./dist/esm/index.js",
   "types": "./@types/index.d.ts",
   "scripts": {
-    "build": "pnpm build:esm && pnpm build:cjs",
+    "build": "pnpm build:esm && pnpm build:cjs && pnpm run build:lib",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "build:lib": "tsc --module esnext --outDir lib",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "test": "jest --config jest.config.json",
     "prepare": "npm run build",
