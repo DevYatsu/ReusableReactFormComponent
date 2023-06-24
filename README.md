@@ -190,7 +190,7 @@ function App() {
           //for example here passwordConfirm is removed, this way there is only the password that is sent 
           // and no passwordConfirm which may be useless
 
-         redirectFunction={redirect} // (Function)
+         redirectFunction={redirect} // ((string) => void)
          //a function called to redirect the user on another page
          //should take one parameter which is the url to redirect on
          //this parameter is to be set in the successRedirectionURL form parameter
