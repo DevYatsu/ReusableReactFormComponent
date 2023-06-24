@@ -335,7 +335,7 @@ import Form from "reusable-react-form/lib/main";
 ```
 - To import third-party functions and utils
 ```typescript
-import { getGenericFormInputsData, genInput, genSelect, genTextArea } from "reusable-react-form/lib/main";
+import { getGenericFormInputsData, genInput, genSelect, genTextArea } from "reusable-react-form/lib/utils";
 ```
 
 Start using this simple form component and have fun!
