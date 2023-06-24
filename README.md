@@ -26,7 +26,7 @@ To use the form component in your project, follow these steps:
 ### 3. Import the form component into your React application:
 
 ```typescript
-import { Form } from 'component-dir';
+import { Form } from 'reusable-react-form/dist/cjs/main';
 
 function App() {
   return (
@@ -40,7 +40,7 @@ function App() {
 ### 4. Add the minimal parameters for the Form to works correctly
 
 ```typescript
-import { Form } from 'component-dir';
+import { Form } from 'reusable-react-form/dist/cjs/main';
 
 const data = [
 {
@@ -74,7 +74,7 @@ You can check all the possbile arguments attributable to the form component in t
 We can take a look at the possibilities regarding the customization of the form fields:
 
 ```typescript
-import { Form } from 'component-dir';
+import { Form } from 'reusable-react-form/dist/cjs/main';
 
 const data = [
 {// input name is displayed as label, it must be in camelCase: here the label will be FAMILY NAME
@@ -142,7 +142,20 @@ We can now look at the customization of the parameters on the Form component.
 ### 5. Form Component Customization
 
 ```typescript
-const data = [{name: "testInput", placeholder: "Enter some text..."}];
+import {genInput, genSelect, genTextArea} from "reusable-react-form/dist/cjs/utils";
+
+const data = [//name       //placeholder
+formInput("testInput", "Enter some text...", {//options in an object
+   minLength: {
+      value: 1,
+      message: "min length is 1"
+   }//you can also add form inputs like this
+}),
+formSelect("testSelect", 
+[{value: "test", displayedValue:"hehe test"}, {value: "test2", displayedValue:"hehe test2"}]
+),
+formTextArea("testTextArea", "placeholder...", {rows: 5})
+];             //name                          //options, row defaults to 6
 
 function App() {
   return (
@@ -224,30 +237,17 @@ const data = [
     required: "Username is required",
   },
 {name: "email", placeholder: "Your email...",
-   pattern: {
-      value: '(?:[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*|"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])'
-      message: 
-         "Password must contain at least 1 capital and lowercase letter, 1 digit and 1 special character."
-   }
-},
+pattern: ... 
 {
    name: "password", placeholder: "Your password...", type: "password", 
-   minLength: {value: 8, message : "Password must be at least 8 chars long."},
-   maxLength: {value: 40, message : "Password cannot exceed 40 chars long."},
-   pattern: {
-      value: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
-      message: 
-         "Password must contain at least 1 capital and lowercase letter, 1 digit and 1 special character."
-   }
+   minLength:...,
+   maxLength: ...,
+   pattern: ...
 },
-{name: "passwordConfirm", placeholder: "Your password again...", type: "password"
-   minLength: {value: 8, message : "Password must be at least 8 chars long."},
-   maxLength: {value: 40, message : "Password cannot exceed 40 chars long."},
-   pattern: {
-      value: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
-      message: 
-         "Password must contain at least 1 capital and lowercase letter, 1 digit and 1 special character."
-   },
+{name: "passwordConfirm", placeholder: "Your password again...", type: "password",
+   minLength: ...,
+   maxLength: ...,
+   pattern: ...
    isPasswordConfirm: true
 },
 ];
@@ -284,12 +284,19 @@ Instead of rewriting the components from earlier everytime we can simply use the
 We can find basic but common components in this directory `./utils/formFunctions.ts`
 
 ```typescript
-import {getGenericFormInputsData} from "./utils/formFunctions.ts"
+import {getGenericFormInputsData, formInput} from "reusable-react-form/dist/cjs/utils"
 
 const data = getGenericFormInputsData("username", "email", "password", "passwordCheck"); 
 // in the right order we put the components names as parameters of this function.
 // now the data variable contains the same array with object as before;
 //actually these saved components are more secure and have more restrictions and validation rules
+
+OR YOU CAN EVEN DO THAT
+const data = 
+   [
+      ...getGenericFormInputsData("username", "email", "password", "passwordCheck"), 
+      formInput("test", "enter sth")
+   ];
 
 function App() {
   return (
