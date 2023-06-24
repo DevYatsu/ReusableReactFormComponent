@@ -2,20 +2,20 @@ import { FormInput, InputOptions } from "../../@types/input";
 import { FormSelect, SelectValues } from "../../@types/select";
 import { FormTextArea, TextAreaOptions } from "../../@types/textarea";
 
-export const genInput = (
+export function genInput(
   name: string,
   placeholder: string,
   options: InputOptions
-): FormInput => {
+): FormInput {
   return { name, placeholder, ...options };
-};
-export const genSelect = (name: string, values: SelectValues): FormSelect => {
+}
+export function genSelect(name: string, values: SelectValues): FormSelect {
   return { name, values, element: "select" };
-};
-export const genTextArea = (
+}
+export function genTextArea(
   name: string,
   placeholder: string,
   options: TextAreaOptions
-): FormTextArea => {
+): FormTextArea {
   return { name, placeholder, ...options, element: "textarea" };
-};
+}

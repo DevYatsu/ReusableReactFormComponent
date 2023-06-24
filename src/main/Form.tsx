@@ -81,7 +81,7 @@ export default function Form<T extends FieldValues>({
       <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col justify-between gap-3">
           {data.map((input, index) => (
-            <div key={`${input.name}-${index}`}>
+            <div key={`${input.name}.${index}`}>
               {input.element !== undefined && input.element === "select" ? (
                 <Select {...input} register={register} />
               ) : input.element !== undefined &&
