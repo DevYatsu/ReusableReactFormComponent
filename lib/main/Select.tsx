@@ -4,7 +4,9 @@ const Select = ({ name, register, values }: Select) => (
   <>
     <select {...register(name)}>
       {values.map((option) => (
-        <option value={option.value}>{option.displayValue}</option>
+        <option value={option.value} key={option.value}>
+          {option.displayValue}
+        </option>
       ))}
     </select>
   </>

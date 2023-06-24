@@ -24,5 +24,5 @@ export type FormProps = {
   extraData?: extraFormData | Record<string, any>;
   successRedirectionURL?: string;
   removeRequestProps?: string[];
-  redirectFunction?: Function;
+  redirectFunction?: (string) => void;
 };
