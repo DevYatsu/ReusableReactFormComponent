@@ -1,7 +1,7 @@
 {
   "type": "commonjs",
   "name": "reusable-react-form",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple package containing a reusable react form. It's divided into the main form component and a component version adapted to next js.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -18,8 +18,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DevYatsu/ReusableReactFormComponent"
+    "url": "https://github.com/DevYatsu/reusable-react-form"
   },
+  "git repository": "https://github.com/DevYatsu/reusable-react-form",
   "keywords": [
     "form",
     "react",
