@@ -1,2 +1,3 @@
 import { getGenericFormInputsData } from "./formFunctions";
-export default getGenericFormInputsData;
+import { genInput, genSelect, genTextArea } from "./generateFormFields";
+export { getGenericFormInputsData, genInput, genSelect, genTextArea };
