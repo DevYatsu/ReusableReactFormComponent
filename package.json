@@ -15,7 +15,10 @@
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint"
   },
-  "git repository": "https://github.com/DevYatsu/ReusableReactFormComponent",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DevYatsu/ReusableReactFormComponent"
+  },
   "keywords": [
     "form",
     "react",

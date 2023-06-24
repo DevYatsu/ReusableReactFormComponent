@@ -7,11 +7,7 @@ export type ReactHookFormPropertiesRestrictions<T> =
     }
   | T;
 
-export type FormInput = {
-  element?: "input";
-  type?: HTMLInputTypeAttribute;
-  name: string;
-  placeholder: string;
+export type InputOptions = {
   isPasswordConfirm?: boolean;
   minLength?: ReactHookFormPropertiesRestrictions<number>;
   maxLength?: ReactHookFormPropertiesRestrictions<number>;
@@ -21,5 +17,12 @@ export type FormInput = {
   required?: boolean | string;
   disabled?: boolean;
 };
+
+export type FormInput = {
+  element?: "input";
+  type?: HTMLInputTypeAttribute;
+  name: string;
+  placeholder: string;
+} & InputOptions;
 
 export type Input = FormInput & { register: any; getValues: any };
