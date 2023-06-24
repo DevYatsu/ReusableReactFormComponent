@@ -1,6 +1,6 @@
-import { InputOptions } from "../../@types/input";
-import { SelectValues } from "../../@types/select";
-import { TextAreaOptions } from "../../@types/textarea";
+import { FormInput, InputOptions } from "../../@types/input";
+import { FormSelect, SelectValues } from "../../@types/select";
+import { FormTextArea, TextAreaOptions } from "../../@types/textarea";
 
 type FieldOptions = TextAreaOptions | InputOptions;
 
@@ -42,7 +42,7 @@ class InputField extends FormField {
     this.options = options;
   }
 
-  init() {
+  init(): FormInput {
     return { name: this.name, placeholder: this.placeholder, ...this.options };
   }
 
@@ -61,7 +61,7 @@ class SelectField extends FormField {
     this._element = "select";
   }
 
-  init() {
+  init(): FormSelect {
     if (this.values.length === 0)
       throw new Error("You need to set values using the setValues method");
 
@@ -85,7 +85,7 @@ class TextAreaField extends FormField {
     this._element = "textarea";
   }
 
-  init() {
+  init(): FormTextArea {
     return {
       name: this.name,
       placeholder: this.placeholder,
@@ -94,22 +94,21 @@ class TextAreaField extends FormField {
     };
   }
 }
-``;
 
 export const genInput = (
   name: string,
   placeholder: string,
   options: InputOptions
-) => {
+): FormInput => {
   return new InputField(name, placeholder, options).init();
 };
-export const genSelect = (name: string, values: SelectValues) => {
+export const genSelect = (name: string, values: SelectValues): FormSelect => {
   return new SelectField(name, values).init();
 };
 export const genTextArea = (
   name: string,
   placeholder: string,
   options: TextAreaOptions
-) => {
+): FormTextArea => {
   return new TextAreaField(name, placeholder, options).init();
 };
