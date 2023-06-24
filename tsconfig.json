@@ -1,10 +1,9 @@
 {
-  "include": ["lib"],
-  "exclude": ["dist", "node_modules"],
   "compilerOptions": {
-    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-    "jsx": "react-jsx" /* Specify what JSX code is generated. */,
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "baseUrl": "./",
+    "target": "es2016",
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
@@ -20,5 +19,7 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "include": ["lib/**/*"],
+  "exclude": ["dist", "node_modules"]
 }
