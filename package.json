@@ -1,20 +1,19 @@
 {
   "type": "commonjs",
   "name": "reusable-react-form",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A simple package containing a reusable react form. It's divided into the main form component and a component version adapted to next js.",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
   "types": "./@types/index.d.ts",
   "scripts": {
-    "build": "pnpm build:esm && pnpm build:cjs && pnpm run build:lib",
+    "build": "pnpm build:esm && pnpm build:cjs",
     "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "build:lib": "tsc --module esnext --outDir lib",
+    "build:cjs": "tsc --module commonjs --outDir lib",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "test": "jest --config jest.config.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint"
+    "prepare": "pnpm run build",
+    "prepublishOnly": "pnpm test && pnpm run lint"
   },
   "repository": {
     "type": "git",

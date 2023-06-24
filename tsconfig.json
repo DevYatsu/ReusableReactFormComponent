@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "target": "es2016",
+    "target": "es2017",
     "jsx": "react-jsx",
     "skipLibCheck": true,
     "module": "esnext",
@@ -10,7 +10,7 @@
     "declaration": true,
     "sourceMap": true,
     "rootDir": "src",
-    "outDir": "./dist/esm",
+    "outDir": "./lib",
     "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,

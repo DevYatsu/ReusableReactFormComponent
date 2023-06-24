@@ -9,11 +9,11 @@ const TextArea_1 = tslib_1.__importDefault(require("./TextArea"));
 const react_hook_form_1 = require("react-hook-form");
 function Form({ data, goal, title, submitURL, className, mistakeInstruction, isSimpleForm, extraData, successRedirectionURL, removeRequestProps, redirectFunction, }) {
     const { register, handleSubmit, formState: { errors }, getValues, } = (0, react_hook_form_1.useForm)();
-    const onSubmit = (data) => tslib_1.__awaiter(this, void 0, void 0, function* () {
+    const onSubmit = async (data) => {
         if (removeRequestProps && removeRequestProps.length !== 0) {
             removeRequestProps.forEach((prop) => delete data[prop]);
         }
-        const response = yield fetch(submitURL, {
+        const response = await fetch(submitURL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -28,13 +28,13 @@ function Form({ data, goal, title, submitURL, className, mistakeInstruction, isS
                 : JSON.stringify(data),
             credentials: "same-origin",
         });
-        const responseBody = yield response.json();
+        const responseBody = await response.json();
         if (responseBody.status === 200 &&
             successRedirectionURL &&
             redirectFunction) {
             redirectFunction(successRedirectionURL);
         }
-    });
+    };
     return ((0, jsx_runtime_1.jsxs)("div", { className: `w-11/12 p-12 bg-slate-100 dark:bg-slate-900/40 sm:w-8/12 md:w-1/2 lg:w-5/12 ${className} ${isSimpleForm ? "w-full p-0 bg-inherit" : ""}`, children: [isSimpleForm ? ("") : ((0, jsx_runtime_1.jsxs)("h1", { className: "text-xl font-semibold", children: ["Hello there ?,", " ", (0, jsx_runtime_1.jsx)("span", { className: "font-normal", children: goal === "register"
                             ? "please fill in your information to register"
                             : goal === "login"

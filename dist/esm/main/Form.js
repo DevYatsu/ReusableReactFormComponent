@@ -1,5 +1,4 @@
 "use client";
-import { __awaiter } from "tslib";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Input from "./Input";
 import Select from "./Select";
@@ -7,11 +6,11 @@ import TextArea from "./TextArea";
 import { useForm } from "react-hook-form";
 export default function Form({ data, goal, title, submitURL, className, mistakeInstruction, isSimpleForm, extraData, successRedirectionURL, removeRequestProps, redirectFunction, }) {
     const { register, handleSubmit, formState: { errors }, getValues, } = useForm();
-    const onSubmit = (data) => __awaiter(this, void 0, void 0, function* () {
+    const onSubmit = async (data) => {
         if (removeRequestProps && removeRequestProps.length !== 0) {
             removeRequestProps.forEach((prop) => delete data[prop]);
         }
-        const response = yield fetch(submitURL, {
+        const response = await fetch(submitURL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -26,13 +25,13 @@ export default function Form({ data, goal, title, submitURL, className, mistakeI
                 : JSON.stringify(data),
             credentials: "same-origin",
         });
-        const responseBody = yield response.json();
+        const responseBody = await response.json();
         if (responseBody.status === 200 &&
             successRedirectionURL &&
             redirectFunction) {
             redirectFunction(successRedirectionURL);
         }
-    });
+    };
     return (_jsxs("div", { className: `w-11/12 p-12 bg-slate-100 dark:bg-slate-900/40 sm:w-8/12 md:w-1/2 lg:w-5/12 ${className} ${isSimpleForm ? "w-full p-0 bg-inherit" : ""}`, children: [isSimpleForm ? ("") : (_jsxs("h1", { className: "text-xl font-semibold", children: ["Hello there ?,", " ", _jsx("span", { className: "font-normal", children: goal === "register"
                             ? "please fill in your information to register"
                             : goal === "login"
