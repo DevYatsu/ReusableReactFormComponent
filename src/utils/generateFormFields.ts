@@ -40,7 +40,6 @@ class InputField extends FormField {
     super(name);
     this.placeholder = placeholder;
     this.options = options;
-    this._element = "input";
   }
 
   init() {
@@ -54,6 +53,7 @@ class InputField extends FormField {
 }
 class SelectField extends FormField {
   public values: SelectValues;
+  public _element: "select";
 
   constructor(name: string, values: SelectValues) {
     super(name);
@@ -76,6 +76,7 @@ class SelectField extends FormField {
 class TextAreaField extends FormField {
   public placeholder: string;
   public options?: FieldOptions;
+  public _element: "textarea";
 
   constructor(name: string, placeholder: string, options?: FieldOptions) {
     super(name);
