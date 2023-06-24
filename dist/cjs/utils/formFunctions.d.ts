@@ -1,5 +1,4 @@
-import { GenericFormInputsData } from "../@types/formFunctions";
-import { FormInput } from "../@types/input";
+import { FormInput } from "../../@types/input";
 export declare const genericFormInputsData: {
     username: {
         name: string;
@@ -62,5 +61,4 @@ export declare const genericFormInputsData: {
         required: string;
     };
 };
-export declare function getGenericFormInputsData(...params: GenericFormInputsData[]): FormInput[];
-export declare function test(): string;
+export declare function getGenericFormInputsData(...params: (keyof typeof genericFormInputsData)[]): FormInput[];

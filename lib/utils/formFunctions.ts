@@ -1,5 +1,4 @@
-import { GenericFormInputsData } from "../@types/formFunctions";
-import { FormInput } from "../@types/input";
+import { FormInput } from "../../@types/input";
 
 export const genericFormInputsData = {
   username: {
@@ -70,10 +69,7 @@ export const genericFormInputsData = {
 };
 
 export function getGenericFormInputsData(
-  ...params: GenericFormInputsData[]
+  ...params: (keyof typeof genericFormInputsData)[]
 ): FormInput[] {
   return [...params].map((name) => genericFormInputsData[name]);
-}
-export function test() {
-  return "test";
 }

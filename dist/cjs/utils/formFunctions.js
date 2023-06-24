@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.test = exports.getGenericFormInputsData = exports.genericFormInputsData = void 0;
+exports.getGenericFormInputsData = exports.genericFormInputsData = void 0;
 exports.genericFormInputsData = {
     username: {
         name: "username",
@@ -67,8 +67,4 @@ function getGenericFormInputsData(...params) {
     return [...params].map((name) => exports.genericFormInputsData[name]);
 }
 exports.getGenericFormInputsData = getGenericFormInputsData;
-function test() {
-    return "test";
-}
-exports.test = test;
 //# sourceMappingURL=formFunctions.js.map

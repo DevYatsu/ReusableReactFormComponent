@@ -1,5 +1,5 @@
 "use client";
-import { Input } from "../@types/input";
+import { Input } from "../../@types/input";
 const checkPassword = (getValues: any) => {
   const { password, passwordConfirmation } = getValues();
   return password === passwordConfirmation || "passwords do not match";

@@ -1,4 +1,4 @@
-import { Select } from "../@types/select";
+import { Select } from "../../@types/select";
 
 const Select = ({ name, register, values }: Select) => (
   <>

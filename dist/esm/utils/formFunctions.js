@@ -63,7 +63,4 @@ export const genericFormInputsData = {
 export function getGenericFormInputsData(...params) {
     return [...params].map((name) => genericFormInputsData[name]);
 }
-export function test() {
-    return "test";
-}
 //# sourceMappingURL=formFunctions.js.map

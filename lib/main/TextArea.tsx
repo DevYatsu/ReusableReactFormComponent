@@ -1,4 +1,4 @@
-import { TextArea } from "../@types/textarea";
+import { TextArea } from "../../@types/textarea";
 
 const TextArea = ({
   name,
