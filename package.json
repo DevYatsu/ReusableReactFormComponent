@@ -11,7 +11,7 @@
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
-    "test": "jest --config jestconfig.json",
+    "test": "jest --config jest.config.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint"
   },
@@ -39,6 +39,8 @@
   "author": "DevYatsu",
   "license": "ISC",
   "dependencies": {
+    "@babel/preset-env": "^7.22.5",
+    "babel-jest": "^29.5.0",
     "next": "^13.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
