@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import Input from "./Input";
 import Link from "next/link";
 import { FormProps } from "../@types/form";

@@ -1,5 +1,4 @@
 import { TextArea } from "../@types/textarea";
-import React from "react";
 
 const TextArea = ({
   name,

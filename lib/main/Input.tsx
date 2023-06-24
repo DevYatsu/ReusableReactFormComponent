@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { Input } from "../@types/input";
 const checkPassword = (getValues: any) => {
   const { password, passwordConfirmation } = getValues();

@@ -1,4 +1,3 @@
-import React from "react";
 import { TextArea } from "../@types/textarea";
 
 const TextArea = ({

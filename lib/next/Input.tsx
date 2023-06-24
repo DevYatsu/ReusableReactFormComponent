@@ -1,6 +1,5 @@
 "use client";
 import { Input } from "../@types/input";
-import React from "react";
 const checkPassword = (getValues: any) => {
   const { password, passwordConfirmation } = getValues();
   return password === passwordConfirmation || "passwords do not match";
