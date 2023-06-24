@@ -26,7 +26,8 @@ To use the form component in your project, follow these steps:
 ### 3. Import the form component into your React application:
 
 ```typescript
-import { Form } from 'reusable-react-form/dist/cjs/main';
+import { Form } from 'reusable-react-form/lib/main';
+//import { Form } from 'reusable-react-form/lib/next'; if using nextjs
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
 ### 4. Add the minimal parameters for the Form to works correctly
 
 ```typescript
-import { Form } from 'reusable-react-form/dist/cjs/main';
+import { Form } from 'reusable-react-form/lib/main';
 
 const data = [
 {
@@ -74,7 +75,7 @@ You can check all the possbile arguments attributable to the form component in t
 We can take a look at the possibilities regarding the customization of the form fields:
 
 ```typescript
-import { Form } from 'reusable-react-form/dist/cjs/main';
+import { Form } from 'reusable-react-form/lib/main';
 
 const data = [
 {// input name is displayed as label, it must be in camelCase: here the label will be FAMILY NAME
@@ -142,7 +143,8 @@ We can now look at the customization of the parameters on the Form component.
 ### 5. Form Component Customization
 
 ```typescript
-import {genInput, genSelect, genTextArea} from "reusable-react-form/dist/cjs/utils";
+import { Form } from 'reusable-react-form/lib/main';
+import {genInput, genSelect, genTextArea} from "reusable-react-form/lib/utils";
 
 const data = [//name       //placeholder
 formInput("testInput", "Enter some text...", {//options in an object
@@ -218,6 +220,8 @@ function App() {
 Let's suppose we are building a register page on my website.
 
 ```typescript
+import { Form } from 'reusable-react-form/lib/main';
+
 const data = [
 {
     name: "username",
@@ -284,7 +288,8 @@ Instead of rewriting the components from earlier everytime we can simply use the
 We can find basic but common components in this directory `./utils/formFunctions.ts`
 
 ```typescript
-import {getGenericFormInputsData, formInput} from "reusable-react-form/dist/cjs/utils"
+import { Form } from 'reusable-react-form/lib/main';
+import {getGenericFormInputsData, formInput} from "reusable-react-form/lib/utils"
 
 const data = getGenericFormInputsData("username", "email", "password", "passwordCheck"); 
 // in the right order we put the components names as parameters of this function.
