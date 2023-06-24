@@ -288,7 +288,11 @@ import {getGenericFormInputsData, formInput} from "reusable-react-form/dist/cjs/
 
 const data = getGenericFormInputsData("username", "email", "password", "passwordCheck"); 
 OR EVEN
-const data = [...getGenericFormInputsData("username", "email", "password", "passwordCheck"), formInput("test", "enter sth")];
+const data = 
+   [
+      ...getGenericFormInputsData("username", "email", "password", "passwordCheck"), 
+      formInput("test", "enter sth")
+   ];
 // in the right order we put the components names as parameters of this function.
 // now the data variable contains the same array with object as before;
 //actually these saved components are more secure and have more restrictions and validation rules
