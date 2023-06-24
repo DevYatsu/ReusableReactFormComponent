@@ -1,55 +1,6 @@
-import { InputOptions } from "../../@types/input";
-import { SelectValues } from "../../@types/select";
-import { TextAreaOptions } from "../../@types/textarea";
-export declare const genInput: (name: string, placeholder: string, options: InputOptions) => {
-    name: string;
-    placeholder: string;
-} | {
-    isPasswordConfirm?: boolean | undefined;
-    minLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    maxLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    pattern?: import("../../@types/input").ReactHookFormPropertiesRestrictions<string> | undefined;
-    min?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    max?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    required?: string | boolean | undefined;
-    disabled?: boolean | undefined;
-    name: string;
-    placeholder: string;
-} | {
-    required?: string | boolean | undefined;
-    minLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    maxLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    rows?: number | undefined;
-    name: string;
-    placeholder: string;
-};
-export declare const genSelect: (name: string, values: SelectValues) => {
-    name: string;
-    values: SelectValues;
-    element: "select";
-};
-export declare const genTextArea: (name: string, placeholder: string, options: TextAreaOptions) => {
-    name: string;
-    placeholder: string;
-    element: "textarea";
-} | {
-    isPasswordConfirm?: boolean | undefined;
-    minLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    maxLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    pattern?: import("../../@types/input").ReactHookFormPropertiesRestrictions<string> | undefined;
-    min?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    max?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    required?: string | boolean | undefined;
-    disabled?: boolean | undefined;
-    name: string;
-    placeholder: string;
-    element: "textarea";
-} | {
-    required?: string | boolean | undefined;
-    minLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    maxLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
-    rows?: number | undefined;
-    name: string;
-    placeholder: string;
-    element: "textarea";
-};
+import { FormInput, InputOptions } from "../../@types/input";
+import { FormSelect, SelectValues } from "../../@types/select";
+import { FormTextArea, TextAreaOptions } from "../../@types/textarea";
+export declare const genInput: (name: string, placeholder: string, options: InputOptions) => FormInput;
+export declare const genSelect: (name: string, values: SelectValues) => FormSelect;
+export declare const genTextArea: (name: string, placeholder: string, options: TextAreaOptions) => FormTextArea;
