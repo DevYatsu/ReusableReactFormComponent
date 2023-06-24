@@ -287,15 +287,16 @@ We can find basic but common components in this directory `./utils/formFunctions
 import {getGenericFormInputsData, formInput} from "reusable-react-form/dist/cjs/utils"
 
 const data = getGenericFormInputsData("username", "email", "password", "passwordCheck"); 
-OR EVEN
+// in the right order we put the components names as parameters of this function.
+// now the data variable contains the same array with object as before;
+//actually these saved components are more secure and have more restrictions and validation rules
+
+OR YOU CAN EVEN DO THAT
 const data = 
    [
       ...getGenericFormInputsData("username", "email", "password", "passwordCheck"), 
       formInput("test", "enter sth")
    ];
-// in the right order we put the components names as parameters of this function.
-// now the data variable contains the same array with object as before;
-//actually these saved components are more secure and have more restrictions and validation rules
 
 function App() {
   return (
