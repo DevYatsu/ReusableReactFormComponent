@@ -180,10 +180,7 @@ function App() {
           successRedirectionURL={"/"} // (string | undefined)
           //URL on which user has to be redirected on when data is sent and responded with a status 200
           //working on the nextJS version of the component with useRouter()
-          //not working on the other version because there is no way to redirect with react alone
-            
-          //you can implement a way to redirect with react router in the component yourself at the indicated
-          //place, there is a comment indicating where to put the redirecting features
+          //working on the main version with a redirecting function given as parameter (redirectFunction)
 
           removeRequestProps={["passwordConfirm"]}// (string[] | undefined)
           //an array of the element names that must be removed before posting the data
