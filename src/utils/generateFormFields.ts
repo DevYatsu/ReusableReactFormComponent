@@ -5,7 +5,7 @@ import { FormTextArea, TextAreaOptions } from "../../@types/textarea";
 export function genInput(
   name: string,
   placeholder: string,
-  options: InputOptions
+  options?: InputOptions
 ): FormInput {
   return { name, placeholder, ...options };
 }
@@ -15,7 +15,7 @@ export function genSelect(name: string, values: SelectValues): FormSelect {
 export function genTextArea(
   name: string,
   placeholder: string,
-  options: TextAreaOptions
+  options?: TextAreaOptions
 ): FormTextArea {
   return { name, placeholder, ...options, element: "textarea" };
 }
