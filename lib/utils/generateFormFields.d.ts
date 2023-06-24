@@ -26,12 +26,12 @@ export declare const genInput: (name: string, placeholder: string, options: Inpu
 export declare const genSelect: (name: string, values: SelectValues) => {
     name: string;
     values: SelectValues;
-    element: "input" | "select" | "textarea";
+    element: "select";
 };
 export declare const genTextArea: (name: string, placeholder: string, options: TextAreaOptions) => {
     name: string;
     placeholder: string;
-    element: "input" | "select" | "textarea";
+    element: "textarea";
 } | {
     isPasswordConfirm?: boolean | undefined;
     minLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
@@ -43,7 +43,7 @@ export declare const genTextArea: (name: string, placeholder: string, options: T
     disabled?: boolean | undefined;
     name: string;
     placeholder: string;
-    element: "input" | "select" | "textarea";
+    element: "textarea";
 } | {
     required?: string | boolean | undefined;
     minLength?: import("../../@types/input").ReactHookFormPropertiesRestrictions<number> | undefined;
@@ -51,5 +51,5 @@ export declare const genTextArea: (name: string, placeholder: string, options: T
     rows?: number | undefined;
     name: string;
     placeholder: string;
-    element: "input" | "select" | "textarea";
+    element: "textarea";
 };
