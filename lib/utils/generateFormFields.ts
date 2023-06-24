@@ -94,17 +94,17 @@ class TextAreaField extends FormField {
 }
 ``;
 
-export const formInput = (
+export const genInput = (
   name: string,
   placeholder: string,
   options: InputOptions
 ) => {
   return new InputField(name, placeholder, options).init();
 };
-export const formSelect = (name: string, values: SelectValues) => {
+export const genSelect = (name: string, values: SelectValues) => {
   return new SelectField(name, values).init();
 };
-export const formTextArea = (
+export const genTextArea = (
   name: string,
   placeholder: string,
   options: TextAreaOptions
