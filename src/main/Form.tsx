@@ -1,8 +1,8 @@
 "use client";
-import Input from "./Input";
+import Input from "../components/Input";
 import { FormProps } from "../../@types/form";
-import Select from "./Select";
-import TextArea from "./TextArea";
+import Select from "../components/Select";
+import TextArea from "../components/TextArea";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 
 export default function Form<T extends FieldValues>({
@@ -10,12 +10,12 @@ export default function Form<T extends FieldValues>({
   goal,
   title,
   submitURL,
-  className,
-  mistakeInstruction,
-  isSimpleForm,
+  className = "",
+  mistakeInstruction = "",
+  isSimpleForm = false,
   extraData,
   successRedirectionURL,
-  removeRequestProps,
+  removeRequestProps = [],
   redirectFunction,
 }: FormProps) {
   const {
@@ -58,6 +58,8 @@ export default function Form<T extends FieldValues>({
     }
   };
 
+  const inputNames: Set<string> = new Set();
+
   return (
     <div
       className={`w-11/12 p-12 bg-slate-100 dark:bg-slate-900/40 sm:w-8/12 md:w-1/2 lg:w-5/12 ${className} ${
@@ -80,23 +82,33 @@ export default function Form<T extends FieldValues>({
       )}
       <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col justify-between gap-3">
-          {data.map((input, index) => (
-            <div key={`${input.name}.${index}`}>
-              {input.element !== undefined && input.element === "select" ? (
-                <Select {...input} register={register} />
-              ) : input.element !== undefined &&
-                input.element === "textarea" ? (
-                <TextArea {...input} register={register} />
-              ) : (
-                <Input {...input} register={register} getValues={getValues} />
-              )}
-              {errors[input.name]?.message && (
-                <span className="text-sm text-red-500">
-                  {`${errors[input.name]?.message}`}
-                </span>
-              )}
-            </div>
-          ))}
+          {data.map((input, index) => {
+            const { name } = input;
+            if (inputNames.has(name)) {
+              throw new Error(
+                `Two Form Fields cannot share a same name!! (${name})`
+              );
+            }
+            inputNames.add(name);
+
+            return (
+              <div key={`${input.name}-${index}`}>
+                {input.element !== undefined && input.element === "select" ? (
+                  <Select {...input} register={register} />
+                ) : input.element !== undefined &&
+                  input.element === "textarea" ? (
+                  <TextArea {...input} register={register} />
+                ) : (
+                  <Input {...input} register={register} getValues={getValues} />
+                )}
+                {errors[name]?.message && (
+                  <span className="text-sm text-red-500">
+                    {`${errors[name]?.message}`}
+                  </span>
+                )}
+              </div>
+            );
+          })}
         </div>
         <button
           type="submit"
