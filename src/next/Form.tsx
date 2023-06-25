@@ -70,7 +70,7 @@ export default function Form<T extends FieldValues>({
 
   return (
     <div
-      className={`w-11/12 p-12 bg-slate-100 dark:bg-slate-900/40 sm:w-8/12 md:w-1/2 lg:w-5/12 ${className} ${
+      className={`w-full p-8 sm:p-12 bg-slate-100 dark:bg-slate-900/40 sm:w-9/12 md:w-1/2 lg:w-5/12 ${className} ${
         isSimpleForm ? "w-full p-0 bg-inherit" : ""
       }`}
     >
