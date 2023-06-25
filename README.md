@@ -12,6 +12,7 @@ The form component provides an easy and efficient way to handle form validation,
 
 ## Installation
 
+There are actually two ways to use our Form Component, either use the data property of the component or insert Input, Select and TextArea components as children of the Form Component. We will first cover the data prop method then the children components method.
 To use the form component in your project, follow these steps:
 
 ### 1. Install **reusable-react-hook** library:
