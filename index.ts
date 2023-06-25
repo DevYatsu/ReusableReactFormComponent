@@ -1,5 +1,23 @@
-import MainForm from "./lib/main";
-import NextForm from "./lib/next";
-import getGenericFormInputsData from "./lib/utils";
+import {
+  Form,
+  NextForm,
+  Input,
+  Select,
+  TextArea,
+  genInput,
+  genSelect,
+  genTextArea,
+  getGenericFormInputsData,
+} from "./lib";
 
-export { MainForm, NextForm, getGenericFormInputsData };
+export {
+  Form,
+  NextForm,
+  Input,
+  Select,
+  TextArea,
+  genInput,
+  genSelect,
+  genTextArea,
+  getGenericFormInputsData,
+};

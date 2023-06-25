@@ -3,6 +3,7 @@ export type SelectValues = { value: string; displayValue: string }[];
 export type SelectOptions = {
   disabled?: boolean;
   className?: string;
+  label?: string;
 };
 
 export type FormSelect = {

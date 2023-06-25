@@ -1,5 +1,3 @@
+import "../index.css";
 import Form from "./Form";
-import { Input } from "../components/Input";
-import { TextArea } from "../components/TextArea";
-import { Select } from "../components/Select";
-export { Form, Input, TextArea, Select };
+export default Form;

@@ -7,6 +7,7 @@ export type TextAreaOptions = {
   disabled?: boolean;
   rows?: number;
   className?: string;
+  label?: string;
 };
 
 export type FormTextArea = {

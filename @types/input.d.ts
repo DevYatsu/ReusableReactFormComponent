@@ -17,6 +17,7 @@ export type InputOptions = {
   required?: boolean | string;
   disabled?: boolean;
   className?: string;
+  label?: string;
 };
 
 export type FormInput = {

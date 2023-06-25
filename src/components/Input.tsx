@@ -1,5 +1,6 @@
 "use client";
 import { Input } from "../../@types/input";
+
 const checkPassword = (getValues: any) => {
   const { password, passwordConfirmation } = getValues();
   return password === passwordConfirmation || "passwords do not match";
@@ -22,6 +23,7 @@ const InputGeneratedByForm = ({
   getValues,
   isPasswordConfirm,
   className,
+  label,
 }: Input) => {
   const regPattern = pattern
     ? typeof pattern === "string"
@@ -35,12 +37,14 @@ const InputGeneratedByForm = ({
         htmlFor={name}
         className="block text-xs font-semibold text-gray-600 uppercase dark:text-gray-200"
       >
-        {name
-          .split("")
-          .map((letter: string) =>
-            letter === letter.toUpperCase() ? ` ${letter}` : letter
-          )
-          .join("")}
+        {label
+          ? label
+          : name
+              .split("")
+              .map((letter: string) =>
+                letter === letter.toUpperCase() ? ` ${letter}` : letter
+              )
+              .join("")}
       </label>
       <input
         id={name}
@@ -77,6 +81,7 @@ const Input = ({
   isPasswordConfirm,
   pattern,
   className,
+  label,
 }: InputProps) => {
   const options = {
     minLength,
@@ -87,11 +92,12 @@ const Input = ({
     disabled,
     isPasswordConfirm,
     pattern,
+    label,
   };
   console.log(options);
 
   return (
-    <>
+    <div className="flex flex-col">
       <label
         htmlFor={name}
         className="block text-xs font-semibold text-gray-600 uppercase dark:text-gray-200"
@@ -111,7 +117,7 @@ const Input = ({
         autoComplete="on"
         className={`block w-full p-3 mt-2 text-indigo-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner ${className}`}
       />
-    </>
+    </div>
   );
 };
 

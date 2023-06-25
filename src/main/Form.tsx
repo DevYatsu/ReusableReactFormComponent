@@ -2,7 +2,7 @@
 import { Input, InputGeneratedByForm } from "../components/Input";
 import { FormProps } from "../../@types/form";
 import { Select, SelectGeneratedByForm } from "../components/Select";
-import { TextArea, TextAreaGeneratedByForm } from "../components/TextArea";
+import { TextAreaGeneratedByForm } from "../components/TextArea";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import React from "react";
 
@@ -132,35 +132,25 @@ export default function Form<T extends FieldValues>({
                     );
                   }
                   inputNames.add(name);
-
-                  let componentToReturn;
-
-                  if (child.type === Input) {
-                    componentToReturn = (
-                      <InputGeneratedByForm
-                        {...child.props}
-                        register={register}
-                        getValues={getValues}
-                      />
-                    );
-                  } else if (child.type === Select) {
-                    componentToReturn = (
-                      <SelectGeneratedByForm
-                        {...child.props}
-                        register={register}
-                      />
-                    );
-                  } else if (child.type === TextArea) {
-                    componentToReturn = (
-                      <TextAreaGeneratedByForm
-                        {...child.props}
-                        register={register}
-                      />
-                    );
-                  }
                   return (
                     <div key={`${child.props.name}.${index}`}>
-                      {componentToReturn}
+                      {child.type === Input ? (
+                        <InputGeneratedByForm
+                          {...child.props}
+                          register={register}
+                          getValues={getValues}
+                        />
+                      ) : child.type === Select ? (
+                        <SelectGeneratedByForm
+                          {...child.props}
+                          register={register}
+                        />
+                      ) : (
+                        <TextAreaGeneratedByForm
+                          {...child.props}
+                          register={register}
+                        />
+                      )}
                       {errors[name]?.message && (
                         <span className="text-sm text-red-500">
                           {`${errors[name]?.message}`}

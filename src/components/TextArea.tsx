@@ -12,10 +12,19 @@ const TextAreaGeneratedByForm = ({
   maxLength,
   disabled,
   className,
+  label,
 }: TextArea) => (
   <>
     <label htmlFor="comment" className="sr-only">
-      Your {name}
+      Your{" "}
+      {label
+        ? label
+        : name
+            .split("")
+            .map((letter: string) =>
+              letter === letter.toUpperCase() ? ` ${letter}` : letter
+            )
+            .join("")}
     </label>
     <textarea
       id={name}
@@ -36,8 +45,9 @@ const TextArea = ({
   maxLength,
   disabled,
   className,
+  label,
 }: TextAreaProps) => {
-  const options = { required, rows, minLength, maxLength, disabled };
+  const options = { required, rows, minLength, maxLength, label, disabled };
   console.log(options);
 
   return (

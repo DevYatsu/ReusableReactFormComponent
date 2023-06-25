@@ -8,20 +8,23 @@ const SelectGeneratedByForm = ({
   values,
   disabled,
   className,
+  label,
 }: Select) => (
   <>
     <label
       htmlFor={name}
-      className=" block mb-2 text-sm font-medium text-slate-900 dark:text-white uppercase"
+      className="block mb-2 text-sm font-medium text-gray-900 uppercase dark:text-white"
     >
-      {name
-        .split("")
-        .map((l) => (l === l.toUpperCase() ? ` ${l}` : l))
-        .join("")}
+      {label
+        ? label
+        : name
+            .split("")
+            .map((l) => (l === l.toUpperCase() ? ` ${l}` : l))
+            .join("")}
     </label>
     <select
       name={name}
-      className={`bg-slate-50 border border-slate-300 py-1 text-slate-900 w-full text-center text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${className}`}
+      className={`bg-gray-50 border border-gray-300 py-1 text-gray-900 w-full text-center text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${className}`}
       {...register(name, { disabled })}
     >
       {values.map((option) => (
@@ -33,9 +36,10 @@ const SelectGeneratedByForm = ({
   </>
 );
 
-const Select = ({ values, name, disabled, className }: SelectProps) => {
+const Select = ({ values, name, disabled, className, label }: SelectProps) => {
   const options = {
     disabled,
+    label,
   };
   console.log(options);
 
@@ -43,7 +47,7 @@ const Select = ({ values, name, disabled, className }: SelectProps) => {
     <>
       <label
         htmlFor={name}
-        className=" block mb-2 text-sm font-medium text-slate-900 dark:text-white uppercase"
+        className="block mb-2 text-sm font-medium text-gray-900 uppercase dark:text-white"
       >
         {name
           .split("")
@@ -52,7 +56,7 @@ const Select = ({ values, name, disabled, className }: SelectProps) => {
       </label>
       <select
         name={name}
-        className={`bg-slate-50 border border-slate-300 py-1 text-slate-900 w-full text-center text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${className}`}
+        className={`bg-gray-50 border border-gray-300 py-1 text-gray-900 w-full text-center text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${className}`}
       >
         {values.map((option) => (
           <option value={option.value} key={option.value}>
