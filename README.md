@@ -26,13 +26,30 @@ import Form from 'reusable-react-form/lib/main';
 function App() {
   return (
     <div className="App">
-      <Form />
     </div>
   );
 }
 ```
 
-### 3. Add the minimal parameters for the Form to works correctly
+### 3. How does the component work ?
+
+Keep in mind that the component needs at least two parameters to work, these parameters are:
+- data: an array of objects defining which components should the form contain
+- submitURL: a string of the url to POST the data on when user submits the form
+
+```typescript
+
+const data = 
+  [
+    {element: "input", name:"test", placeholder: "enter sth"} 
+    // each object represents either an input, a select or a textarea
+  ];
+
+```
+
+### 4. Add the minimal parameters for the Form to works correctly
+
+The name property in objects contained in the data array must be written in CamelCase.
 
 ```typescript
 import { Form } from 'reusable-react-form/lib/main';
@@ -64,7 +81,7 @@ The form will be composed of one input with the name and placeholder put in the 
 
 You can check all the possbile arguments attributable to the form component in the types/form.ts file even tough we will see most of them in the next sections.
 
-### 4. Customize the form fields and validation rules according to your requirements.
+### 5. Customize the form fields and validation rules according to your requirements.
 
 We can take a look at the possibilities regarding the customization of the form fields:
 
@@ -134,7 +151,7 @@ function App() {
 In this code are covered most of the possibilities regarding the customization of the elements composing the form.
 We can now look at the customization of the parameters on the Form component.
 
-### 5. Form Component Customization
+### 6. Form Component Customization
 
 ```typescript
 import Form from 'reusable-react-form/lib/main';
