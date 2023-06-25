@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 
 import "jest-canvas-mock";
 
-import { Form, Input, Select } from "../lib/alternative";
+import { Form, Input, Select } from "../lib/main";
 
 describe("Common render", () => {
   it("renders without crashing", () => {

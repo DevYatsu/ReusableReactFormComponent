@@ -16,6 +16,7 @@ export type InputOptions = {
   max?: ReactHookFormPropertiesRestrictions<number>;
   required?: boolean | string;
   disabled?: boolean;
+  className?: string;
 };
 
 export type FormInput = {

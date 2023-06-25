@@ -1,12 +1,14 @@
 "use client";
-import Input from "../components/Input";
+import { Input, InputGeneratedByForm } from "../components/Input";
 import { FormProps } from "../../@types/form";
-import Select from "../components/Select";
-import TextArea from "../components/TextArea";
+import { Select, SelectGeneratedByForm } from "../components/Select";
+import { TextArea, TextAreaGeneratedByForm } from "../components/TextArea";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+import React from "react";
 
 export default function Form<T extends FieldValues>({
   data,
+  children,
   goal,
   title,
   submitURL,
@@ -18,6 +20,12 @@ export default function Form<T extends FieldValues>({
   removeRequestProps = [],
   redirectFunction,
 }: FormProps) {
+  if ((!children && !data) || (children && data)) {
+    throw new Error(
+      'Either "children" components or "data" prop must be provided, but not both.'
+    );
+  }
+
   const {
     register,
     handleSubmit,
@@ -82,33 +90,88 @@ export default function Form<T extends FieldValues>({
       )}
       <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col justify-between gap-3">
-          {data.map((input, index) => {
-            const { name } = input;
-            if (inputNames.has(name)) {
-              throw new Error(
-                `Two Form Fields cannot share a same name!! (${name})`
-              );
-            }
-            inputNames.add(name);
+          {data
+            ? data.map((input, index) => {
+                const { name } = input;
+                if (inputNames.has(name)) {
+                  throw new Error(
+                    `Two Form Fields cannot share a same name!! (${name})`
+                  );
+                }
+                inputNames.add(name);
 
-            return (
-              <div key={`${input.name}-${index}`}>
-                {input.element !== undefined && input.element === "select" ? (
-                  <Select {...input} register={register} />
-                ) : input.element !== undefined &&
-                  input.element === "textarea" ? (
-                  <TextArea {...input} register={register} />
-                ) : (
-                  <Input {...input} register={register} getValues={getValues} />
-                )}
-                {errors[name]?.message && (
-                  <span className="text-sm text-red-500">
-                    {`${errors[name]?.message}`}
-                  </span>
-                )}
-              </div>
-            );
-          })}
+                return (
+                  <div key={`${input.name}-${index}`}>
+                    {input.element !== undefined &&
+                    input.element === "select" ? (
+                      <SelectGeneratedByForm {...input} register={register} />
+                    ) : input.element !== undefined &&
+                      input.element === "textarea" ? (
+                      <TextAreaGeneratedByForm {...input} register={register} />
+                    ) : (
+                      <InputGeneratedByForm
+                        {...input}
+                        register={register}
+                        getValues={getValues}
+                      />
+                    )}
+                    {errors[name]?.message && (
+                      <span className="text-sm text-red-500">
+                        {`${errors[name]?.message}`}
+                      </span>
+                    )}
+                  </div>
+                );
+              })
+            : React.Children.map(children, (child, index) => {
+                if (React.isValidElement(child)) {
+                  const { name } = child.props;
+                  if (inputNames.has(name)) {
+                    throw new Error(
+                      `Two Form Fields cannot share a same name!! (${name})`
+                    );
+                  }
+                  inputNames.add(name);
+
+                  let componentToReturn;
+
+                  if (child.type === Input) {
+                    componentToReturn = (
+                      <InputGeneratedByForm
+                        {...child.props}
+                        register={register}
+                        getValues={getValues}
+                      />
+                    );
+                  } else if (child.type === Select) {
+                    componentToReturn = (
+                      <SelectGeneratedByForm
+                        {...child.props}
+                        register={register}
+                        getValues={getValues}
+                      />
+                    );
+                  } else if (child.type === TextArea) {
+                    componentToReturn = (
+                      <TextAreaGeneratedByForm
+                        {...child.props}
+                        register={register}
+                      />
+                    );
+                  }
+                  return (
+                    <div key={`${child.props.name}.${index}`}>
+                      {componentToReturn}
+                      {errors[name]?.message && (
+                        <span className="text-sm text-red-500">
+                          {`${errors[name]?.message}`}
+                        </span>
+                      )}
+                    </div>
+                  );
+                }
+                return child;
+              })}
         </div>
         <button
           type="submit"

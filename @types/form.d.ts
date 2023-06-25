@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { FormInput } from "./input";
 import { FormSelect } from "./select";
 import { FormTextArea } from "./textarea";
@@ -14,7 +15,8 @@ export type extraFormData = {
 };
 
 export type FormProps = {
-  data: FormData;
+  data?: FormData;
+  children?: ReactNode;
   goal?: FormGoal;
   title?: string;
   submitURL: string;

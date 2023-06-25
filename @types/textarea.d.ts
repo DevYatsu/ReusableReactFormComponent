@@ -6,6 +6,7 @@ export type TextAreaOptions = {
   maxLength?: ReactHookFormPropertiesRestrictions<number>;
   disabled?: boolean;
   rows?: number;
+  className?: string;
 };
 
 export type FormTextArea = {
