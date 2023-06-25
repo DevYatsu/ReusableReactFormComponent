@@ -15,6 +15,7 @@ export type extraFormData = {
 };
 
 export type FormProps = {
+  children?: ReactNode;
   data?: FormData;
   children?: ReactNode;
   goal?: FormGoal;

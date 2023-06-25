@@ -5,10 +5,23 @@ import {
   InputOptions,
   ReactHookFormPropertiesRestrictions,
 } from "./input";
-import { Select, FormSelect, SelectValues } from "./select";
+import { Select, FormSelect, SelectValues, SelectOptions } from "./select";
 import { TextArea, FormTextArea, TextAreaOptions } from "./textarea";
 
-export { FormData, FormProps, FormGoal, extraFormData };
-export { Input, FormInput, InputOptions, ReactHookFormPropertiesRestrictions };
-export { Select, FormSelect, SelectValues };
-export { TextArea, FormTextArea, TextAreaOptions };
+export {
+  FormData,
+  FormProps,
+  FormGoal,
+  extraFormData,
+  Input,
+  FormInput,
+  InputOptions,
+  ReactHookFormPropertiesRestrictions,
+  Select,
+  FormSelect,
+  SelectValues,
+  SelectOptions,
+  TextArea,
+  FormTextArea,
+  TextAreaOptions,
+};
