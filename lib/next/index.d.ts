@@ -1,4 +1,4 @@
-import Form from "./Form";
+import Form from "./form/Form";
 import { Input } from "../components/Input";
 import { TextArea } from "../components/TextArea";
 import { Select } from "../components/Select";

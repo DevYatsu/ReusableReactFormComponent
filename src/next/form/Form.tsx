@@ -1,9 +1,11 @@
 "use client";
-import { Input, InputGeneratedByForm } from "../components/Input";
-import { FormProps } from "../../@types/form";
-import { Select, SelectGeneratedByForm } from "../components/Select";
-import { TextArea, TextAreaGeneratedByForm } from "../components/TextArea";
-import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+import { Input, InputGeneratedByForm } from "../../components/Input";
+import Link from "next/link";
+import { FormProps } from "../../../@types/form";
+import { Select, SelectGeneratedByForm } from "../../components/Select";
+import { TextArea, TextAreaGeneratedByForm } from "../../components/TextArea";
+import { useRouter } from "next/navigation";
+import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
 import React from "react";
 
 export default function Form<T extends FieldValues>({
@@ -18,7 +20,6 @@ export default function Form<T extends FieldValues>({
   extraData,
   successRedirectionURL,
   removeRequestProps = [],
-  redirectFunction,
 }: FormProps) {
   if ((!children && !data) || (children && data)) {
     throw new Error(
@@ -32,6 +33,8 @@ export default function Form<T extends FieldValues>({
     formState: { errors },
     getValues,
   } = useForm<T>();
+
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<T> = async (data: { [x: string]: any }) => {
     if (removeRequestProps && removeRequestProps.length !== 0) {
@@ -57,12 +60,8 @@ export default function Form<T extends FieldValues>({
 
     const responseBody = await response.json();
 
-    if (
-      responseBody.status === 200 &&
-      successRedirectionURL &&
-      redirectFunction
-    ) {
-      redirectFunction(successRedirectionURL);
+    if (responseBody.status === 200 && successRedirectionURL) {
+      router.push(successRedirectionURL);
     }
   };
 
@@ -185,15 +184,17 @@ export default function Form<T extends FieldValues>({
         </button>
         <p className="inline-block mt-4 text-xs text-gray-500 cursor-pointer dark:hover:text-white hover:text-black">
           {goal === "register" ? (
-            <a href={"/login"}>Already registered? Login</a>
+            <Link href={"/login"}>Already registered? Login</Link>
           ) : goal === "login" ? (
-            <a href={"/register"}>Not Registered? Join Us</a>
+            <Link href={"/register"}>Not Registered? Join Us</Link>
           ) : typeof mistakeInstruction === "object" ? (
-            <a href={mistakeInstruction[0]}>
+            <Link href={mistakeInstruction[0]}>
               {mistakeInstruction[1] ? mistakeInstruction[1] : ""}
-            </a>
+            </Link>
           ) : (
-            <a href={"/"}>{mistakeInstruction ? mistakeInstruction : ""}</a>
+            <Link href={"/"}>
+              {mistakeInstruction ? mistakeInstruction : ""}
+            </Link>
           )}
         </p>
       </form>
