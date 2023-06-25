@@ -226,7 +226,7 @@ function App() {
 }
 ```
 
-### 6. Concrete example
+### 7. Concrete example
 
 Let's suppose we are building a register page on my website.
 
@@ -292,7 +292,7 @@ It's done! As simple as that our component works perfectly!
 But it is kind of painful to write the data object right ?
 That's why I wrote in advance a few elements for you!
 
-### 7. Making our forms even simpler!
+### 8. Making our forms even simpler!
 
 Let's suppose we are building the same register page as before.
 Instead of rewriting the components from earlier everytime we can simply use the components found with the form!
@@ -336,7 +336,7 @@ Isn't it actually easy ?
 We've come full circle! 
 You have seen everything there is to seen in my simple project, have fun!
 
-### 7. Start using the lib:
+### 9. Start using the lib:
 Just a fresh reminder: 
 - To install the package
   
