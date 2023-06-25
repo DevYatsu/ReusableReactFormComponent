@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
 import React from "react";
 
+type Form = Omit<FormProps, "redirectFunction">;
+
 export default function Form<T extends FieldValues>({
   data,
   children,
@@ -20,7 +22,7 @@ export default function Form<T extends FieldValues>({
   extraData,
   successRedirectionURL,
   removeRequestProps = [],
-}: FormProps) {
+}: Form) {
   if ((!children && !data) || (children && data)) {
     throw new Error(
       'Either "children" components or "data" prop must be provided, but not both.'
@@ -45,7 +47,6 @@ export default function Form<T extends FieldValues>({
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRF-Token": "your-csrf-token",
         "Strict-Transport-Security":
           "max-age=31536000; includeSubDomains; preload",
         "X-Content-Type-Options": "nosniff",
@@ -147,7 +148,6 @@ export default function Form<T extends FieldValues>({
                       <SelectGeneratedByForm
                         {...child.props}
                         register={register}
-                        getValues={getValues}
                       />
                     );
                   } else if (child.type === TextArea) {

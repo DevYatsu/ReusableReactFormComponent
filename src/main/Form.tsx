@@ -148,7 +148,6 @@ export default function Form<T extends FieldValues>({
                       <SelectGeneratedByForm
                         {...child.props}
                         register={register}
-                        getValues={getValues}
                       />
                     );
                   } else if (child.type === TextArea) {
