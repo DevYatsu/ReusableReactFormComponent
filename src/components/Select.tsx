@@ -24,11 +24,15 @@ const SelectGeneratedByForm = ({
     </label>
     <select
       name={name}
-      className={`bg-gray-50 border border-gray-300 py-1 text-gray-900 w-full text-center text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${className}`}
+      className={`bg-gray-200 border border-gray-300 py-1 focus:bg-gray-300 text-gray-900 dark:text-indigo-800 w-full text-center text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 ${className}`}
       {...register(name, { disabled })}
     >
       {values.map((option) => (
-        <option value={option.value} key={option.value}>
+        <option
+          value={option.value}
+          key={option.value}
+          className="antialiased uppercase "
+        >
           {option.displayValue}
         </option>
       ))}
@@ -56,7 +60,7 @@ const Select = ({ values, name, disabled, className, label }: SelectProps) => {
       </label>
       <select
         name={name}
-        className={`bg-gray-50 border border-gray-300 py-1 text-gray-900 w-full text-center text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${className}`}
+        className={`bg-gray-200 border border-gray-300 py-1 text-gray-900 w-full text-center text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${className}`}
       >
         {values.map((option) => (
           <option value={option.value} key={option.value}>
