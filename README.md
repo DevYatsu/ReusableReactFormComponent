@@ -15,14 +15,16 @@ The form component provides an easy and efficient way to handle form validation,
 There are actually two ways to use our Form Component, either use the data property of the component or insert Input, Select and TextArea components as children of the Form Component. We will first cover the data prop method then the children components method.
 To use the form component in your project, follow these steps:
 
-### 1. Install **reusable-react-hook** library:
-\- `npm install reusable-react-hook` or `pnpm install reusable-react-hook`
+## 1. Install **reusable-react-hook** library:
+- `npm install reusable-react-hook` 
+- `pnpm install reusable-react-hook`
+- `yarn add reusable-react-hook`
 
-### 2. Import the form component into your React application:
+## 2. Import the form component into your React application:
 
 ```typescript
-import Form from 'reusable-react-form/lib/main';
-//import { Form } from 'reusable-react-form/lib/next'; if using nextjs
+import { Form } from 'reusable-react-form/lib';
+//import { NextForm as Form } from 'reusable-react-form/lib'; if using nextjs
 
 function App() {
   return (
@@ -32,7 +34,7 @@ function App() {
 }
 ```
 
-### 3. How does the component work ?
+## 3. How does the component work ?
 
 Keep in mind that the component needs at least two parameters to work, these parameters are:
 - data: an array of objects defining which components should the form contain
@@ -48,12 +50,12 @@ const data =
 
 ```
 
-### 4. Add the minimal parameters for the Form to works correctly
+## 4. Add the minimal parameters for the Form to works correctly
 
 The name property in objects contained in the data array must be written in CamelCase.
 
 ```typescript
-import { Form } from 'reusable-react-form/lib/main';
+import { Form } from 'reusable-react-form/lib';
 
 const data = [
 {
@@ -82,16 +84,20 @@ The form will be composed of one input with the name and placeholder put in the 
 
 You can check all the possbile arguments attributable to the form component in the types/form.ts file even tough we will see most of them in the next sections.
 
-### 5. Customize the form fields and validation rules according to your requirements.
+## 5. Customize the form fields and validation rules according to your requirements.
 
 We can take a look at the possibilities regarding the customization of the form fields:
 
 ```typescript
-import Form from 'reusable-react-form/lib/main';
+import { Form } from 'reusable-react-form/lib';
 
 const data = [
-{// input name is displayed as label, it must be in camelCase: here the label will be FAMILY NAME
+{
+  // the form will check if the input possessess a label key
+  // if it does it will be used as label, elsewhere the name
+  // will be used, set it in camelCase in case
   name: "familyName", 
+  label: "family name",
   placeholder: "Enter something...",
   type: "password", //all possible input types, default is obviously set to "text" 
   minLength: 6, //set a min length
@@ -152,11 +158,10 @@ function App() {
 In this code are covered most of the possibilities regarding the customization of the elements composing the form.
 We can now look at the customization of the parameters on the Form component.
 
-### 6. Form Component Customization
+## 6. Form Component Customization
 
 ```typescript
-import Form from 'reusable-react-form/lib/main';
-import { genInput, genSelect, genTextArea } from "reusable-react-form/lib/utils";
+import { Form, genInput, genSelect, genTextArea } from 'reusable-react-form/lib';
 
 const data = [//name       //placeholder
 formInput("testInput", "Enter some text...", {//options in an object
@@ -227,12 +232,12 @@ function App() {
 }
 ```
 
-### 7. Concrete example
+## 7. Concrete example
 
 Let's suppose we are building a register page on my website.
 
 ```typescript
-import Form from 'reusable-react-form/lib/main';
+import { Form } from 'reusable-react-form/lib';
 
 const data = [
 {
@@ -293,15 +298,14 @@ It's done! As simple as that our component works perfectly!
 But it is kind of painful to write the data object right ?
 That's why I wrote in advance a few elements for you!
 
-### 8. Making our forms even simpler!
+## 8. Making our forms even simpler!
 
 Let's suppose we are building the same register page as before.
 Instead of rewriting the components from earlier everytime we can simply use the components found with the form!
 We can find basic but common components in this directory `./utils/formFunctions.ts`
 
 ```typescript
-import Form from 'reusable-react-form/lib/main';
-import { getGenericFormInputsData, genInput } from "reusable-react-form/lib/utils"
+import { Form, getGenericFormInputsData, genInput } from 'reusable-react-form/lib';
 
 const data = getGenericFormInputsData("username", "email", "password", "passwordCheck"); 
 // in the right order we put the components names as parameters of this function.
@@ -337,7 +341,40 @@ Isn't it actually easy ?
 We've come full circle! 
 You have seen everything there is to seen in my simple project, have fun!
 
-### 9. Start using the lib:
+## 9. I haven't told you everything!
+If you prepare using a more react-friendly approach, I have at last implemented an other way to use the Form component!
+
+### The form component can be used in 2 distinct ways:
+1. Using the data property of the form
+
+All the examples up there cover this method, so i will be rather quick on this one. You just set an array of objects as value of the data parameter on the form, each object representing one form field, either an input, a select or a textarea. This method cannot be mixed with the other method.
+
+2. Using the Input, Select and TextArea components
+
+You can import 3 components that can be passed as children of the Form component and that represent the different fields of the form. The two methods are working in a similar way, we are just taking a different approach. The components can take as parameters the same parameters as if they were objects in the data array. Let's see an example real quick!
+
+```typescript
+import { Form, Input, Select, TextArea } from "reusable-react-form/lib";
+
+export default function App() { 
+  return <>
+        <Form submitURL="/">
+          {/*I would rather consider using the 1st method with the getGenericFormInputsData("email") because the validation regex is more complex and efficient*/}
+            <Input name="email" placeholder="Enter your email..." type="email" pattern={{value: "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message:"must be a valid email"}} /> 
+            <Input name="username" placeholder="The way you want us to call you..." minLength={4}/>
+            <TextArea name="survey" placeholder="How did you hear about us..." minLength={{value: 20, message: "please tell us a bit more about it"}}/>
+            <Select name="gender" values=[{value: "male", displayValue: "male"}, {...}] />
+            <Input name="password" placeholder="Enter your password..." type="password" minLength={{value:8, message: "password must contain at least 8 characters"}}/>
+        </Form>
+    </>
+} 
+
+```
+
+The 2 methods cannot be mixed together. It means that you either decide to use the data array or the form children components. If you try to mix the two methods, it will produce an error. Use whichever you think is better for what you wish to achieve, may it be a complex form or just a simple form needing at most a username, email and password inputs.
+
+
+## 10. Start using the lib:
 Just a fresh reminder: 
 - To install the package
   
@@ -345,15 +382,19 @@ Just a fresh reminder:
 
 - To import the Form in a nextJS project
 ```typescript
-import Form from "reusable-react-form/lib/next";
+import { NextForm as Form } from "reusable-react-form/lib";
 ```
 - To import the Form in any other reactJS project
 ```typescript
-import Form from "reusable-react-form/lib/main";
+import { Form } from "reusable-react-form/lib";
+```
+- To import form components
+```typescript
+import { Input, Select, TextArea } from "reusable-react-form/lib";
 ```
 - To import third-party functions and utils
 ```typescript
-import { getGenericFormInputsData, genInput, genSelect, genTextArea } from "reusable-react-form/lib/utils";
+import { getGenericFormInputsData, genInput, genSelect, genTextArea } from "reusable-react-form/lib";
 ```
 
 Start using this simple form component and have fun!
